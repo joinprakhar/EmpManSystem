@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import linked from "./constant";
+import { Link } from "react-router-dom";
 
 const Task = () => {
   const [list, setList] = useState([]);
@@ -38,6 +39,9 @@ const Task = () => {
   return (
     <>
       <h1 className="mainFont">Assign Task</h1>
+      <Link className="close" to={`/admindash`}>
+        <button className="closebtn">Back to DashBoard</button>
+      </Link>
       <table class="simple-table">
         <tr>
           <th>Name</th>
@@ -48,7 +52,7 @@ const Task = () => {
 
         {list?.length > 0
           ? list.map((item) => {
-            const it = item?.task
+              const it = item?.task;
               return (
                 <tr key={item._id}>
                   <td>{item?.name}</td>

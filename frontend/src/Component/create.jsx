@@ -98,7 +98,7 @@ const Create = () => {
             <br />
             <br />
             <label>
-              Password <br />
+              Address <br />
               <input
                 required=""
                 placeholder="Address"
