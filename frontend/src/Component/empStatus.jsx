@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import linked from "./constant";
 
 const EmpStatus = () => {
   const [list, setList] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:4000/getallemp").then((response) => {
+    fetch(`${linked}getallemp`).then((response) => {
       response.json().then((posts) => {
         setList(posts);
       });
@@ -13,18 +14,11 @@ const EmpStatus = () => {
 
   async function Active(i, x) {
     console.log(x);
-    const response = await fetch(`http://localhost:4000/adminupdate/${i}`, {
+    const response = await fetch(`${linked}adminupdate/${i}`, {
       method: "POST",
       body: JSON.stringify({ x }),
       headers: { "Content-Type": "application/json" },
     });
-
-    // if (response.status === 200) {
-    //   alert("Update Success");
-    // } else {
-    //   alert("Update Failed");
-    // }
-
      window.location.reload(true);
   }
 

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
+import linked from "./constant";
 
 const Task = () => {
   const [list, setList] = useState([]);
   const [options, setOptions] = useState("");
   const [task, setTask] = useState("");
+  const [ch, setCh] = useState(false);
   useEffect(() => {
-    fetch("http://localhost:4000/getallemp").then((response) => {
+    fetch(`${linked}getallemp`).then((response) => {
       response.json().then((posts) => {
         setList(posts);
       });
@@ -13,9 +15,10 @@ const Task = () => {
   }, [options, setOptions]);
   const handleChange = (event) => {
     setTask(event.target.value);
+    setCh(true)
   };
   async function Active(i) {
-    const response = await fetch(`http://localhost:4000/updatetask/${i}`, {
+    const response = await fetch(`${linked}updatetask/${i}`, {
       method: "POST",
       body: JSON.stringify({ task }),
       headers: { "Content-Type": "application/json" },
@@ -45,17 +48,24 @@ const Task = () => {
 
         {list?.length > 0
           ? list.map((item) => {
+            const it = item?.task
               return (
                 <tr key={item._id}>
                   <td>{item?.name}</td>
                   <td>{item?.task}</td>
                   <td>
-                    <select value={task} onChange={handleChange}>
-                      <option value="Washroom">Washroom</option>
+                    <select
+                      disabled={!item?.isActive}
+                      value={ch ? task : it}
+                      onChange={handleChange}
+                    >
+                      <option value="Washroom">No task Assigned</option>
                       <option value="Garden">Garden</option>
                       <option value="Cleaning">Cleaning</option>
+                      <option value="Washroom Cleaning">
+                        Washroom cleaning
+                      </option>
                     </select>
-                    
                   </td>
                   <td>
                     <button

@@ -6,7 +6,7 @@ const AdminDashboard = () => {
     <>
       <h1 className="mainFont">Admin Dashboard</h1>
       <Link className="close" to={`/`}>
-        <button className='closebtn'>Sign Out</button>
+        <button className="closebtn">Sign Out</button>
       </Link>
       <div className="homepage">
         <div class="card">

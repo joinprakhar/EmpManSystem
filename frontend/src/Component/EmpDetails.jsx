@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from 'react'
-import { Link, Navigate } from "react-router-dom";
+import { Link, } from "react-router-dom";
+import linked from './constant';
 
 const EmpDetails = () => {
-      
+      console.log(linked)
       const [list, setList] = useState([]);
       useEffect(() => {
-        fetch("http://localhost:4000/getallemp").then((response) => {
+        fetch(`${linked}getallemp`).then((response) => {
           response.json().then((posts) => {
             setList(posts);
           });
         });
       }, []);
 
-      const update=(a)=>{
-        return <Navigate to={"/emp/a"} />;
-      }
 
-      console.log(list[2]?.isActive);
+
+
   return (
     <>
       <h1 className="mainFont">Employee Detail</h1>

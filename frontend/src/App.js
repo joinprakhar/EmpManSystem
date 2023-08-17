@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom"
 import EmpLogin from './Component/empLogin'
 import Login from './Component/login'
 import EmpDetails from './Component/EmpDetails'
-import SingleDetails from './Component/empDetail'
+//import SingleDetails from './Component/empDetail'
 import Homepage from './Component/Homepage'
 import AdminDashboard from './Component/adminDashboard'
 import EmpStatus from './Component/empStatus'
@@ -20,7 +20,6 @@ const App = () => {
       <Route path="/admin" element={<Login />} />
       <Route path="/details" element={<EmpDetails />} />
       <Route path="/create" element={<Create />} />
-      <Route path="/emp/:id" element={<SingleDetails />} />
       <Route path="/admindash" element={<AdminDashboard />} />
       <Route path="/empstatus" element={<EmpStatus />} />
       <Route path="/task" element={<Task />} />
@@ -30,3 +29,5 @@ const App = () => {
 }
 
 export default App
+
+//<Route path="/emp/:id" element={<SingleDetails />} />

@@ -1,5 +1,6 @@
 import React, {useState } from "react";
 import { Link } from "react-router-dom";
+import linked from "./constant";
 
 
 const EmpLogin = () => {
@@ -19,20 +20,12 @@ const dattend = async () => {
   const s = date.getSeconds();
   const time = `${h}:${m}:${s}`;
   setOut(time);
-  const response = await fetch(
-    `http://localhost:4000/timeout/${list._id}`,
-    {
-      method: "POST",
-      body: JSON.stringify({ time }),
-      headers: { "Content-Type": "application/json" },
-    }
-  );
-  // if (response.status === 200) {
-  //   alert("Update Success");
-  // } else {
-  //   alert("Update Failed");
-    
-  // }
+  const response = await fetch(`${linked}timeout/${list._id}`, {
+    method: "POST",
+    body: JSON.stringify({ time }),
+    headers: { "Content-Type": "application/json" },
+  });
+
   setRedirect(true);
   window.location.reload(true);
 };
@@ -40,7 +33,7 @@ const dattend = async () => {
 
   async function login(ev) {
     ev.preventDefault();
-    const response = await fetch("http://localhost:4000/emplogin", {
+    const response = await fetch(`${linked}emplogin`, {
       method: "POST",
       body: JSON.stringify({ email, password }),
       headers: { "Content-Type": "application/json" },
@@ -69,11 +62,11 @@ const dattend = async () => {
     const s = date.getSeconds();
     const time = `${h}:${m}:${s}`
     setInt(time);
-    const response = await fetch(`http://localhost:4000/timein/${list._id}`, {
-    method: "POST",
-    body: JSON.stringify({ time }),
-    headers: { "Content-Type": "application/json" },
-  });
+    const response = await fetch(`${linked}timein/${list._id}`, {
+      method: "POST",
+      body: JSON.stringify({ time }),
+      headers: { "Content-Type": "application/json" },
+    });
   // if (response) {
   //   alert("Update Success");
   // } else {

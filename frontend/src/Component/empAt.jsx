@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import linked from "./constant";
 
 const Attandance = () => {
   const [list, setList] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:4000/getallemp").then((response) => {
+    fetch(`${linked}getallemp`).then((response) => {
       response.json().then((posts) => {
         setList(posts);
       });
