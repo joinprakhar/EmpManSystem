@@ -60,6 +60,7 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+              <br /><br />
               <button>Submit</button>
             </label>
           </form>
