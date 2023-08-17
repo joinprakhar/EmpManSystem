@@ -2,15 +2,16 @@ const mongoose = require('mongoose')
 const { Schema, model } = mongoose
 
 const UserSchema = new Schema({
-    name: String,
-    email: String,
-    password: String,
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
     isActive: Boolean,
-    phone: Number,
+    phone: { type: String, required: true },
     task: String,
-    address: String,
+    address: { type: String, required: true },
     timein: String,
     timeout: String,
+
 
 }, {
     timestamps: true
